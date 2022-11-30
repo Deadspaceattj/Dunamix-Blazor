@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+<<<<<<< HEAD
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RapidCMS.Core.Abstractions.Setup;
@@ -16,6 +17,12 @@ using Shared.Validators;
 using Client.Components;
 using RapidCMS.Repositories;
 using RapidCMS.Repositories.ApiBridge;
+=======
+using BlazorApp.Client;
+using Blazorise;
+using Blazorise.Material;
+using Blazorise.Icons.Material;
+>>>>>>> d702ddf4b543d95929f9604bfb0a0555e05aa598
 
 namespace Client
 {
@@ -27,10 +34,21 @@ namespace Client
         // function api (run this project along with Client.FunctionAPI)
         // private static readonly Uri BaseUri = new Uri("http://localhost:7071/api/");
 
+<<<<<<< HEAD
         public static async Task Main(string[] args)
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
+=======
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration["API_Prefix"] ?? builder.HostEnvironment.BaseAddress) });
+builder.Services
+    .AddBlazorise( options =>
+    {
+        options.Immediate = true;
+    } )
+    .AddMaterialProviders()
+    .AddMaterialIcons();
+>>>>>>> d702ddf4b543d95929f9604bfb0a0555e05aa598
 
             builder.Services.AddAuthorizationCore();
 
