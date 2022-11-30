@@ -1,19 +1,34 @@
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Azure.Functions.Worker.Configuration;
 
-namespace ApiIsolated
+namespace Api
 {
-    public class Program
+    class Program
     {
-        public static void Main()
+        static async Task Main(string[] args)
         {
+            Startup? startup = null;
+
             var host = new HostBuilder()
-                .ConfigureFunctionsWorkerDefaults()
+                .ConfigureAppConfiguration(config =>
+                {
+                    config.AddCommandLine(args);
+                    config.AddEnvironmentVariables();
+                })
+                .ConfigureFunctionsWorkerDefaults((context, builder) =>
+                {
+                    startup ??= new Startup(context.Configuration);
+                    startup.ConfigureWorker(builder);
+                })
+                .ConfigureServices((context, services) =>
+                {
+                    startup ??= new Startup(context.Configuration);
+                    startup.ConfigureServices(services);
+                })
                 .Build();
 
-            host.Run();
+            await host.RunAsync();
         }
     }
 }

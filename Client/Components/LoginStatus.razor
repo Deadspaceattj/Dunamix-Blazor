@@ -1,0 +1,8 @@
+﻿@using Microsoft.AspNetCore.Components.Authorization
+
+<AuthorizeView>
+    <div>
+        <div class="btn btn-primary"><Icon Name="Contact" /> Hi, @context.User.Identity?.Name!</div>
+        <NavLink class="btn btn-primary" href="/authentication/logout"><Icon Name="SignOut" /> Logout</NavLink>
+    </div>
+</AuthorizeView>

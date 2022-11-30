@@ -1,10 +1,31 @@
 ﻿@using System.Net.Http
-@using System.Net.Http.Json
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 @using Microsoft.AspNetCore.Components.Forms
 @using Microsoft.AspNetCore.Components.Routing
 @using Microsoft.AspNetCore.Components.Web
-@using Microsoft.AspNetCore.Components.Web.Virtualization
 @using Microsoft.AspNetCore.Components.WebAssembly.Http
 @using Microsoft.JSInterop
-@using BlazorApp.Client
-@using BlazorApp.Client.Shared
+
+@using RapidCMS.Core.Abstractions.Forms
+@using RapidCMS.Core.Abstractions.Repositories
+@using RapidCMS.Core.Enums
+@using RapidCMS.Core.Models.Data
+
+@using Shared
+@using Shared.Data
+
+@using Client.Components
+
+@using RapidCMS.Repositories
+
+@using RapidCMS.UI.Components.Displays
+@using RapidCMS.UI.Components.Editors
+@using RapidCMS.UI.Components.Icons
+@using RapidCMS.UI.Components.Panes
+@using RapidCMS.UI.Components.Preview
+@using RapidCMS.UI.Components.Router
+@using RapidCMS.UI.Helpers
+
+@*@using ITfoxtec.Identity.BlazorWebAssembly.OpenidConnect*@
